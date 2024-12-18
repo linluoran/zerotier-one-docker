@@ -6,7 +6,7 @@ ENV ZEROTIER_COMMIT=185a3a2c76e6bf1b1c0415871f43076638eb007c
 RUN apk add --no-cache build-base linux-headers
 
 RUN set -eux; \
-    wget https://ghproxy.net/https://github.com/zerotier/ZeroTierOne/archive/$ZEROTIER_COMMIT.zip -O /zerotier.zip; \
+    wget https://ghproxy.cc/https://github.com/zerotier/ZeroTierOne/archive/$ZEROTIER_COMMIT.zip -O /zerotier.zip; \
     unzip /zerotier.zip -d /; \
     cd /ZeroTierOne-$ZEROTIER_COMMIT; \
     make ZT_SSO_SUPPORTED=0; \

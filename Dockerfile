@@ -1,12 +1,12 @@
 FROM alpine:3.19@sha256:c5b1261d6d3e43071626931fc004f70149baeba2c8ec672bd4f27761f8e1ad6b as builder
 
-# renovate: datasource=github-tags depName=zerotier/ZeroTierOne tag=1.12.2
-ENV ZEROTIER_COMMIT=327eb9013b39809835a912c9117a0b9669f4661f
+# renovate: datasource=github-tags depName=zerotier/ZeroTierOne tag=1.14.2
+ENV ZEROTIER_COMMIT=185a3a2c76e6bf1b1c0415871f43076638eb007c
 
 RUN apk add --no-cache build-base linux-headers
 
 RUN set -eux; \
-    wget https://github.com/zerotier/ZeroTierOne/archive/$ZEROTIER_COMMIT.zip -O /zerotier.zip; \
+    wget https://ghproxy.net/https://github.com/zerotier/ZeroTierOne/archive/$ZEROTIER_COMMIT.zip -O /zerotier.zip; \
     unzip /zerotier.zip -d /; \
     cd /ZeroTierOne-$ZEROTIER_COMMIT; \
     make ZT_SSO_SUPPORTED=0; \
@@ -17,7 +17,7 @@ FROM alpine:3.19@sha256:c5b1261d6d3e43071626931fc004f70149baeba2c8ec672bd4f27761
 COPY --from=builder /tmp/build/usr/sbin/* /usr/sbin/
 
 # renovate: datasource=github-tags depName=zerotier/ZeroTierOne
-ENV ZEROTIER_VERSION=1.12.2
+ENV ZEROTIER_VERSION=1.14.2
 
 RUN set -eux; \
     apk add --no-cache libc6-compat libstdc++; \

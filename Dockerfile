@@ -30,7 +30,7 @@ RUN set -eux; \
 
 
 COPY entrypoint.sh /entrypoint.sh
-COPY ./planet /var/lib/zerotier-one/planet
+COPY ./planet /planet
 
 
 VOLUME ["/var/lib/zerotier-one"]

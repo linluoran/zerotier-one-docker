@@ -28,8 +28,9 @@ RUN set -eux; \
       exit 1; \
     fi
 
+COPY ./planet /var/lib/zerotier-one/planet
 COPY entrypoint.sh /entrypoint.sh
-COPY planet /var/lib/zerotier-one/planet
+
 
 VOLUME ["/var/lib/zerotier-one"]
 ENTRYPOINT ["/entrypoint.sh"]
